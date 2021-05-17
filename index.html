@@ -14285,6 +14285,7 @@ a.anchor-link {
 <span class="kn">from</span> <span class="nn">urllib.parse</span> <span class="kn">import</span> <span class="n">urlparse</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span> <span class="k">as</span> <span class="n">dt</span>
+<span class="kn">import</span> <span class="nn">folium</span>
 </pre></div>
 
      </div>
@@ -15715,7 +15716,7 @@ a.anchor-link {
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[13]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[12]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">annual_aqi</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;90th Percentile AQI&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -15736,7 +15737,7 @@ a.anchor-link {
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[13]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[12]:</div>
 
 
 
@@ -15904,7 +15905,7 @@ a.anchor-link {
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[14]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[13]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">daily_aqi</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;Defining Parameter&#39;</span><span class="p">,</span> <span class="s1">&#39;Defining Site&#39;</span><span class="p">,</span> <span class="s1">&#39;Number of Sites Reporting&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -15926,7 +15927,7 @@ a.anchor-link {
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[14]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[13]:</div>
 
 
 
@@ -16028,7 +16029,7 @@ a.anchor-link {
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[15]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[14]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">state_em</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;State FIPS&#39;</span><span class="p">,</span><span class="s1">&#39;Tier 1 Code&#39;</span><span class="p">,</span><span class="s1">&#39;Tier 1 Description&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -16039,7 +16040,7 @@ a.anchor-link {
     <span class="k">else</span><span class="p">:</span>
         <span class="n">state_em</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="n">title</span><span class="p">:</span><span class="s2">&quot;20&quot;</span><span class="o">+</span><span class="n">title</span><span class="p">[</span><span class="mi">9</span><span class="p">:]},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
         
-<span class="n">state_em</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">NaN</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">state_em</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">NaN</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="n">state_em</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
@@ -16057,7 +16058,7 @@ a.anchor-link {
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[15]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[14]:</div>
 
 
 
@@ -16132,7 +16133,7 @@ a.anchor-link {
       <th>1</th>
       <td>AL</td>
       <td>NH3</td>
-      <td>-1.00000</td>
+      <td>-0.10000</td>
       <td>0.01516</td>
       <td>0.01605</td>
       <td>0.01597</td>
@@ -16244,7 +16245,7 @@ a.anchor-link {
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[16]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[15]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">gdp</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;GeoFIPS&#39;</span><span class="p">,</span><span class="s1">&#39;Region&#39;</span><span class="p">,</span><span class="s1">&#39;TableName&#39;</span><span class="p">,</span><span class="s1">&#39;LineCode&#39;</span><span class="p">,</span><span class="s1">&#39;IndustryClassification&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -16264,7 +16265,7 @@ a.anchor-link {
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[16]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[15]:</div>
 
 
 
@@ -16451,7 +16452,7 @@ a.anchor-link {
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[48]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[16]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">afv_models</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;Unnamed: 0&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -16475,7 +16476,7 @@ a.anchor-link {
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[48]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[16]:</div>
 
 
 
@@ -16508,17 +16509,7 @@ a.anchor-link {
       <th>1997</th>
       <th>1998</th>
       <th>1999</th>
-      <th>2000</th>
-      <th>2001</th>
-      <th>2002</th>
-      <th>2003</th>
-      <th>2004</th>
-      <th>2005</th>
-      <th>2006</th>
-      <th>2007</th>
-      <th>2008</th>
-      <th>2009</th>
-      <th>2010</th>
+      <th>...</th>
       <th>2011</th>
       <th>2012</th>
       <th>2013</th>
@@ -16544,23 +16535,13 @@ a.anchor-link {
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
+      <td>...</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>1.0</td>
       <td>2.0</td>
       <td>0.0</td>
-      <td>1</td>
+      <td>1.0</td>
       <td>3.0</td>
       <td>3.0</td>
       <td>3.0</td>
@@ -16578,23 +16559,13 @@ a.anchor-link {
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
+      <td>...</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>6.0</td>
       <td>6.0</td>
       <td>7.0</td>
-      <td>7</td>
+      <td>7.0</td>
       <td>4.0</td>
       <td>1.0</td>
       <td>7.0</td>
@@ -16612,23 +16583,13 @@ a.anchor-link {
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
+      <td>...</td>
       <td>3.0</td>
       <td>3.0</td>
       <td>4.0</td>
       <td>4.0</td>
       <td>3.0</td>
-      <td>0</td>
+      <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -16646,23 +16607,13 @@ a.anchor-link {
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>1.0</td>
+      <td>...</td>
       <td>3.0</td>
       <td>1.0</td>
       <td>3.0</td>
       <td>6.0</td>
       <td>6.0</td>
-      <td>5</td>
+      <td>5.0</td>
       <td>7.0</td>
       <td>9.0</td>
       <td>9.0</td>
@@ -16680,23 +16631,13 @@ a.anchor-link {
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>1.0</td>
-      <td>0.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
+      <td>...</td>
       <td>3.0</td>
       <td>4.0</td>
       <td>5.0</td>
       <td>1.0</td>
       <td>3.0</td>
-      <td>2</td>
+      <td>2.0</td>
       <td>0.0</td>
       <td>1.0</td>
       <td>1.0</td>
@@ -16704,6 +16645,7 @@ a.anchor-link {
     </tr>
   </tbody>
 </table>
+<p>5 rows × 31 columns</p>
 </div>
 </div>
 
@@ -16716,7 +16658,7 @@ a.anchor-link {
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[18]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[17]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">pev_sales</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;Unnamed: 0&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -16737,7 +16679,7 @@ a.anchor-link {
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[18]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[17]:</div>
 
 
 
@@ -16864,7 +16806,7 @@ a.anchor-link {
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[19]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[18]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;City&#39;</span><span class="p">,</span><span class="s1">&#39;State&#39;</span><span class="p">,</span><span class="s1">&#39;ZIP&#39;</span><span class="p">,</span><span class="s1">&#39;Latitude&#39;</span><span class="p">,</span><span class="s1">&#39;Longitude&#39;</span><span class="p">,</span><span class="s1">&#39;Open Date&#39;</span><span class="p">]</span>
@@ -16886,7 +16828,7 @@ a.anchor-link {
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[19]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[18]:</div>
 
 
 
@@ -16992,7 +16934,7 @@ a.anchor-link {
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[20]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[19]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># UPDATE: THIS IS THE BAD CODE</span>
@@ -17008,6 +16950,7 @@ a.anchor-link {
         <span class="n">annual_aqi</span><span class="p">[</span><span class="n">annual_aqi</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">y</span><span class="p">][</span><span class="s1">&#39;Hazardous Days&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
     <span class="n">uds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">unh</span><span class="p">)</span>
 
+    
 <span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">years</span><span class="p">,</span> <span class="n">gds</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Good Days&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">years</span><span class="p">,</span> <span class="n">mds</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;yellow&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Moderate Days&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">years</span><span class="p">,</span> <span class="n">uds</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Unhealthy Days&#39;</span><span class="p">)</span>
@@ -17051,7 +16994,7 @@ a.anchor-link {
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[21]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[20]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># This is a corrected bar graph of the same information as above</span>
@@ -17121,7 +17064,7 @@ a.anchor-link {
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[33]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[21]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">years</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">pev_sales</span><span class="p">)[</span><span class="mi">2</span><span class="p">:</span><span class="mi">11</span><span class="p">]</span>
@@ -17175,7 +17118,7 @@ a.anchor-link {
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[54]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[22]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">years</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">afv_models</span><span class="p">)[</span><span class="mi">1</span><span class="p">:</span><span class="mi">30</span><span class="p">]</span>
@@ -17237,6 +17180,50 @@ a.anchor-link {
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h4 id="Now-that-we-have-cleaned-our-data-and-visualized-some-basic-information-from-it,-it's-time-to-explore-the-correlations-and-meanings-of-this-data.-The-more-exploratory-power-we-establish,-the-better-hypothesis-we-can-make-and-conclusions-we-can-draw.">Now that we have cleaned our data and visualized some basic information from it, it's time to explore the correlations and meanings of this data. The more exploratory power we establish, the better hypothesis we can make and conclusions we can draw.<a class="anchor-link" href="#Now-that-we-have-cleaned-our-data-and-visualized-some-basic-information-from-it,-it's-time-to-explore-the-correlations-and-meanings-of-this-data.-The-more-exploratory-power-we-establish,-the-better-hypothesis-we-can-make-and-conclusions-we-can-draw.">&#182;</a></h4>
 </div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h4 id="First,-let's-look-at-how-the-increased-implementations-of-charging-stations-may-have-an-impact-on-both-the-county's-AQI-or-the-state's-emissions.">First, let's look at how the increased implementations of charging stations may have an impact on both the county's AQI or the state's emissions.<a class="anchor-link" href="#First,-let's-look-at-how-the-increased-implementations-of-charging-stations-may-have-an-impact-on-both-the-county's-AQI-or-the-state's-emissions.">&#182;</a></h4>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[23]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#t = {&#39;State&#39;:[], &#39;Year&#39;:[], &#39;Emissions (1000/tons)&#39;:[]}</span>
+<span class="c1">#for key,group in state_em.groupby([&#39;State&#39;]):</span>
+<span class="c1">#    t0 = []</span>
+<span class="c1">#    for y in np.arange(1996,2021):</span>
+<span class="c1">#        t[&#39;State&#39;].append(key)</span>
+<span class="c1">#        t[&#39;Year&#39;].append(y)</span>
+<span class="c1">#        t[&#39;Emissions (1000/tons)&#39;].append(group[str(y)].sum())</span>
+<span class="c1">#         </span>
+<span class="c1">#        </span>
+<span class="c1">#d = pd.DataFrame(data=t)</span>
+<span class="c1">#</span>
+<span class="c1">#plt.bar()</span>
+<span class="c1">#plt.bar(years, d[&#39;Emissions (1000/tons)&#39;], color=&#39;green&#39;, label=&#39;Good Days&#39;)</span>
+<span class="c1">#plt.bar(years, d[&#39;Emissions (1000/tons)&#39;], color=&#39;yellow&#39;, label=&#39;Moderate Days&#39;)</span>
+<span class="c1">#plt.bar(years, d[&#39;Emissions (1000/tons)&#39;], color=&#39;red&#39;, label=&#39;Unhealthy Days&#39;)</span>
+<span class="c1">#plt.title(&#39;Emissions by State by Year&#39;)</span>
+<span class="c1">#plt.xlabel(&#39;Year&#39;)</span>
+<span class="c1">#plt.ylabel(&#39;Emissions (1000/ton)&#39;)</span>
+<span class="c1">#plt.legend()</span>
+
+<span class="c1"># Turn on the grid</span>
+<span class="c1">#plt.minorticks_on()</span>
+<span class="c1">#plt.grid(which=&#39;major&#39;, linestyle=&#39;-&#39;, linewidth=&#39;0.5&#39;, color=&#39;green&#39;)</span>
+<span class="c1">#plt.grid(which=&#39;minor&#39;, linestyle=&#39;:&#39;, linewidth=&#39;0.5&#39;, color=&#39;black&#39;)</span>
+
+<span class="c1">#plt.show()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
@@ -17244,6 +17231,37 @@ a.anchor-link {
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h4 id="Let's-take-a-second-to-visualize-the-AF-stations-across-the-U.S.-We-see-obvious-concentrations-in-some-areas,-especially-on-the-Mid-East-to-East.-Let's-see-if-this-information-helps-us-learn-anything.">Let's take a second to visualize the AF stations across the U.S. We see obvious concentrations in some areas, especially on the Mid-East to East. Let's see if this information helps us learn anything.<a class="anchor-link" href="#Let's-take-a-second-to-visualize-the-AF-stations-across-the-U.S.-We-see-obvious-concentrations-in-some-areas,-especially-on-the-Mid-East-to-East.-Let's-see-if-this-information-helps-us-learn-anything.">&#182;</a></h4>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[24]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#station_map = folium.Map(location=[38, -96], zoom_start=3.7, legend=True)</span>
+
+<span class="c1">#for i,row in af_stations.iterrows():</span>
+<span class="c1">#    if row[&#39;Open Date&#39;].year &lt; 2000:</span>
+<span class="c1">#        folium.CircleMarker(location=(row[&#39;Latitude&#39;], row[&#39;Longitude&#39;]), radius=0.1, color=&#39;red&#39;, fill=False).add_to(station_map)</span>
+<span class="c1">#    elif row[&#39;Open Date&#39;].year &lt; 2010:</span>
+<span class="c1">#        folium.CircleMarker(location=(row[&#39;Latitude&#39;], row[&#39;Longitude&#39;]), radius=0.1, color=&#39;orange&#39;, fill=False).add_to(station_map)</span>
+<span class="c1">#    elif row[&#39;Open Date&#39;].year &lt; 2015:</span>
+<span class="c1">#        folium.CircleMarker(location=(row[&#39;Latitude&#39;], row[&#39;Longitude&#39;]), radius=0.1, color=&#39;green&#39;, fill=False).add_to(station_map)</span>
+<span class="c1">#    else:</span>
+<span class="c1">#        folium.CircleMarker(location=(row[&#39;Latitude&#39;], row[&#39;Longitude&#39;]), radius=0.1, color=&#39;light blue&#39;, fill=False).add_to(station_map)</span>
+
+<span class="c1">#station_map</span>
 </pre></div>
 
      </div>
@@ -17282,26 +17300,13 @@ a.anchor-link {
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[55]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[25]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#pd.set_option(&#39;display.max_rows&#39;, None)</span>
 <span class="c1">#pd.set_option(&#39;display.max_columns&#39;, None)</span>
 <span class="c1">#pd.reset_option(&#39;display.max_rows&#39;)</span>
+<span class="c1">#pd.reset_option(&#39;display.max_columns&#39;)</span>
 </pre></div>
 
      </div>
